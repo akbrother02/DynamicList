@@ -4,8 +4,13 @@ import java.io.Serializable;
 
 public class AtomPayment implements Serializable {
 
+
 	
 	private String name = "";
+
+	public AtomPayment() {
+
+	}
 
 	public String getAddress() {
 		return address;

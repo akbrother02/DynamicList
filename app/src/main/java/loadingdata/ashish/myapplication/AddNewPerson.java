@@ -12,12 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class AddNewPerson extends Activity implements OnClickListener {
 
 	private AtomPayListAdapter adapter;
 	private EditText etname,etaddress;
 	Button sendtoserver;
+	ListView atomPaysListView;
+	ArrayList<AtomPayment> listItems=new ArrayList<>();
 	ArrayAdapter<CharSequence> spinneradapter;
 	private Spinner spinner;
 	@Override
@@ -48,7 +51,7 @@ public class AddNewPerson extends Activity implements OnClickListener {
 
 	private void setupListViewAdapter() {
 		adapter = new AtomPayListAdapter(AddNewPerson.this, R.layout.atom_pay_list_item, new ArrayList<AtomPayment>());
-		ListView atomPaysListView = (ListView)findViewById(R.id.EnterPays_atomPaysList);
+		atomPaysListView= (ListView)findViewById(R.id.EnterPays_atomPaysList);
 		atomPaysListView.setAdapter(adapter);
 	}
 	
@@ -57,7 +60,9 @@ public class AddNewPerson extends Activity implements OnClickListener {
 			
 			@Override
 			public void onClick(View v) {
-				adapter.insert(new AtomPayment(etname.getText().toString(),etaddress.getText().toString(),spinner.getSelectedItem().toString()), 0);
+				AtomPayment atomPayment=new AtomPayment(etname.getText().toString(),etaddress.getText().toString(),spinner.getSelectedItem().toString());
+				adapter.insert(atomPayment, 0);
+				listItems.add(atomPayment);
 			}
 		});
 	}
@@ -74,7 +79,14 @@ public class AddNewPerson extends Activity implements OnClickListener {
 	}
 
 	private void DataSendtoServer() {
+		for (int i = 0; i <listItems.size() ; i++) {
+			String name=listItems.get(i).getName();
+			String address=listItems.get(i).getAddress();
+			String spinner=listItems.get(i).getSpinner();
+			Log.d("name:",name +" "+address +" "+spinner);
 
+
+		}
 
 	}
 }
