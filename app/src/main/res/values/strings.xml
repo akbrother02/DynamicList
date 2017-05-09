@@ -1,0 +1,12 @@
+<resources>
+    <string-array name="City">
+        <item>Delhi</item>
+        <item>Gurgaon</item>
+        <item>Noida</item>
+    </string-array>
+    <string name="app_name">ListViewDemo</string>
+    <string name="EnterPays_atomPay_nameHint">nazwa platnosci</string>
+    <string name="EnterPays_TextView_ZeroValue">0</string>
+    <string name="EnterPays_addPayment">Add Payment</string>
+
+</resources>
